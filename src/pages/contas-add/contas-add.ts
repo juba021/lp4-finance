@@ -1,5 +1,7 @@
+import { ContasDaoProvider } from './../../providers/contas-dao/contas-dao';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Conta } from '../../class/contas';
 
 /**
  * Generated class for the ContasAddPage page.
@@ -15,11 +17,46 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ContasAddPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public conta: Conta;
+
+  constructor(public navCtrl: NavController, 
+      public navParams: NavParams,
+      public daoConta: ContasDaoProvider,
+      public alertCtrl: AlertController) {
+
+      this.conta = new Conta();
+      
+      if (this.navParams.data.id) {
+        this.daoConta.get(this.navParams.data.id).then((result: any) => {
+          this.conta = result;
+        });
+      }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContasAddPage');
   }
 
+  salvar() {
+    if (this.conta.ID) {
+      this.daoConta.update(this.conta).then(() => {
+        this.alert();
+        this.navCtrl.pop();
+      })
+    } else {
+      this.daoConta.insert(this.conta).then(() => {
+        this.alert();
+        this.navCtrl.pop();
+      });
+    }
+  }
+
+  alert() {
+    const alert = this.alertCtrl.create({
+      title: 'Sucesso!',
+      subTitle: 'Registro salvo com sucesso!',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }

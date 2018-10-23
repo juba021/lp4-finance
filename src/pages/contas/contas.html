@@ -19,11 +19,11 @@
 
   <ion-list>
     <ion-item-sliding *ngFor="let conta of listContas">
-      <ion-item ion-item>
-        {{ conta.id }} - {{ conta.descricao }}
+      <ion-item ion-item (click)="toContasUpdate(conta.ID)" >
+        {{ conta.ID }} - {{ conta.DESCRICAO }}
       </ion-item>
       <ion-item-options>
-        <button ion-button color="danger">Excluir</button>
+        <button ion-button color="danger" (click)="delete(conta.ID)" >Excluir</button>
       </ion-item-options>
     </ion-item-sliding>
     
