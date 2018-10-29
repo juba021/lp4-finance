@@ -4,12 +4,65 @@
       LP4 Finance
     </ion-title>
     <button ion-button menuToggle><ion-icon name="menu"> </ion-icon></button>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+
+  <div class="teste">
+    <ion-icon name="ios-arrow-dropleft" padding>
+
+    </ion-icon>
+
+    <span>
+      Outubro
+    </span>
+
+    <ion-icon name="ios-arrow-dropright" padding>
+
+    </ion-icon>
+  </div>
+
+  <ion-item-group>
+    <ion-item-divider color="light">Extrato</ion-item-divider>
+    <ion-item><span>Créditos </span>
+      <span class="float-right text-green">
+        R$ 1000,00
+      </span>
+    </ion-item>
+    <ion-item>Debitos 
+      <span class="float-right text-red">
+        R$ 1000,00
+      </span></ion-item>
+    <ion-item>Saldo 
+      <span class="float-right text-green">
+        R$ 1000,00
+      </span>
+    </ion-item>
+    
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider color="light">Créditos</ion-item-divider>
+    <ion-item>Salario 
+        <span class="float-right text-green">
+          R$ 1000,00
+        </span>
+    </ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider color="light">Débitos</ion-item-divider>
+    <ion-item>Agua
+        <span class="float-right text-red">
+          R$ 1000,00
+        </span>
+    </ion-item>
+  </ion-item-group>
+
 </ion-content>

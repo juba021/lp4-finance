@@ -1,3 +1,4 @@
+import { LancamentoAddPageModule } from './../pages/lancamento-add/lancamento-add.module';
 import { ContasAddPageModule } from './../pages/contas-add/contas-add.module';
 import { ContasPageModule } from './../pages/contas/contas.module';
 import { IntroPageModule } from './../pages/intro/intro.module';
@@ -24,7 +25,7 @@ import { ContasDaoProvider } from '../providers/contas-dao/contas-dao';
     IntroPageModule,
     ContasPageModule,
     ContasAddPageModule,
-    
+    LancamentoAddPageModule,    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
