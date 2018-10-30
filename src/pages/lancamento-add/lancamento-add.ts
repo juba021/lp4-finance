@@ -1,3 +1,4 @@
+import { Lancamento } from './../../class/lancamentos';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -15,6 +16,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LancamentoAddPage {
 
+  public lancamento: Lancamento;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

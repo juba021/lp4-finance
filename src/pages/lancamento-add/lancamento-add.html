@@ -8,11 +8,82 @@
 
   <ion-navbar>
     <ion-title>lancamento-add</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only >
+        <ion-icon name="add"  ></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+    <ion-list>
+
+        <ion-item>
+          <ion-label fixed>Descrição</ion-label>
+          <ion-input type="text" value="" [(ngModel)]="lancamento.DESCRICAO"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>Valor</ion-label>
+          <ion-input type="" value="" [(ngModel)]="lancamento.VALOR"></ion-input>
+        </ion-item>
+
+        <ion-item>
+
+          <ion-label>Referencias</ion-label>
+          <ion-select [(ngModel)]="lancamento.MES">
+              <ion-option value="nes">NES</ion-option>
+              <ion-option value="n64">Nintendo64</ion-option>
+              <ion-option value="ps">PlayStation</ion-option>
+              <ion-option value="genesis">Sega Genesis</ion-option>
+              <ion-option value="saturn">Sega Saturn</ion-option>
+              <ion-option value="snes">SNES</ion-option>
+            </ion-select>
+            <ion-select [(ngModel)]="lancamento.ANO">
+              <ion-option value="nes">NES</ion-option>
+              <ion-option value="n64">Nintendo64</ion-option>
+              <ion-option value="ps">PlayStation</ion-option>
+              <ion-option value="genesis">Sega Genesis</ion-option>
+              <ion-option value="saturn">Sega Saturn</ion-option>
+              <ion-option value="snes">SNES</ion-option>
+            </ion-select>
+            
+        </ion-item>
+        <ion-item>
+          
+          <ion-label>Conta</ion-label>
+          <ion-select [(ngModel)]="lancamento.CONTA">
+              <ion-option value="nes">NES</ion-option>
+              <ion-option value="n64">Nintendo64</ion-option>
+              <ion-option value="ps">PlayStation</ion-option>
+              <ion-option value="genesis">Sega Genesis</ion-option>
+              <ion-option value="saturn">Sega Saturn</ion-option>
+              <ion-option value="snes">SNES</ion-option>
+            </ion-select>
+            
+        </ion-item>
+        <ion-item>
+          
+          <ion-label>Tipo</ion-label>
+          <ion-select [(ngModel)]="lancamento.TIPO">
+            <ion-option value="nes">NES</ion-option>
+            <ion-option value="n64">Nintendo64</ion-option>
+            <ion-option value="ps">PlayStation</ion-option>
+            <ion-option value="genesis">Sega Genesis</ion-option>
+            <ion-option value="saturn">Sega Saturn</ion-option>
+            <ion-option value="snes">SNES</ion-option>
+          </ion-select>
+            
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Pago</ion-label>
+          <ion-checkbox color="dark" checked="true" [(ngModel)]="lancamento.PAGO"></ion-checkbox>
+        </ion-item>
+
+
+      </ion-list>
 
 </ion-content>
