@@ -17,12 +17,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class LancamentoAddPage {
 
   public lancamento: Lancamento;
-  
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LancamentoAddPage');
+  }
+
+  public salvar() {
+    
   }
 
 }
