@@ -13,6 +13,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DatabaseProvider } from '../providers/database/database';
 import { ContasDaoProvider } from '../providers/contas-dao/contas-dao';
+import { LancamentosDaoProvider } from '../providers/lancamentos-dao/lancamentos-dao';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ContasDaoProvider } from '../providers/contas-dao/contas-dao';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SQLite,
     DatabaseProvider,
-    ContasDaoProvider
+    ContasDaoProvider,
+    LancamentosDaoProvider
   ],
 })
 export class AppModule {}

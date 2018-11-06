@@ -9,8 +9,8 @@
   <ion-navbar>
     <ion-title>lancamento-add</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only >
-        <ion-icon name="add"  (click)="salvar()" ></ion-icon>
+      <button ion-button icon-only (click)="salvar()">
+        <ion-icon name="add"  ></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -23,57 +23,52 @@
 
         <ion-item>
           <ion-label fixed>Descrição</ion-label>
-          <ion-input type="text" value="" [(ngModel)]="lancamento.DESCRICAO"></ion-input>
+          <ion-input type="text" [(ngModel)]="lancamento.DESCRICAO" name="DESCRICAO"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label fixed>Valor</ion-label>
-          <ion-input type="" value="" [(ngModel)]="lancamento.VALOR"></ion-input>
+          <ion-input type="text" [(ngModel)]="lancamento.VALOR" name="VALOR"></ion-input>
         </ion-item>
 
         <ion-item>
 
           <ion-label>Referencias</ion-label>
-          <ion-select [(ngModel)]="lancamento.MES">
-              <ion-option value="nes">NES</ion-option>
-              <ion-option value="n64">Nintendo64</ion-option>
-              <ion-option value="ps">PlayStation</ion-option>
-              <ion-option value="genesis">Sega Genesis</ion-option>
-              <ion-option value="saturn">Sega Saturn</ion-option>
-              <ion-option value="snes">SNES</ion-option>
+          <ion-select [(ngModel)]="lancamento.MES" name="MES">
+              <ion-option value="0">Janeiro</ion-option>
+              <ion-option value="1">Fevereiro</ion-option>
+              <ion-option value="2">Março</ion-option>
+              <ion-option value="3">Abril</ion-option>
+              <ion-option value="4">Maio</ion-option>
+              <ion-option value="5">Junho</ion-option>
+              <ion-option value="6">Julho</ion-option>
+              <ion-option value="7">Agosto</ion-option>
+              <ion-option value="8">Setembro</ion-option>
+              <ion-option value="9">Outubro</ion-option>
+              <ion-option value="10">Novembro</ion-option>
+              <ion-option value="11">Dezembro</ion-option>
             </ion-select>
-            <ion-select [(ngModel)]="lancamento.ANO">
-              <ion-option value="nes">NES</ion-option>
-              <ion-option value="n64">Nintendo64</ion-option>
-              <ion-option value="ps">PlayStation</ion-option>
-              <ion-option value="genesis">Sega Genesis</ion-option>
-              <ion-option value="saturn">Sega Saturn</ion-option>
-              <ion-option value="snes">SNES</ion-option>
+
+            <ion-select [(ngModel)]="lancamento.ANO" name="ANO">
+              <ion-option *ngFor="let ano of yearList" value="{{ano}}">{{ano}}</ion-option>
+              
             </ion-select>
             
         </ion-item>
         <ion-item>
           
           <ion-label>Conta</ion-label>
-          <ion-select [(ngModel)]="lancamento.CONTA">
-              <ion-option value="nes">NES</ion-option>
-              <ion-option value="n64">Nintendo64</ion-option>
-              <ion-option value="ps">PlayStation</ion-option>
-              <ion-option value="genesis">Sega Genesis</ion-option>
-              <ion-option value="saturn">Sega Saturn</ion-option>
-              <ion-option value="snes">SNES</ion-option>
+          <ion-select [(ngModel)]="lancamento.CONTA" name="CONTA">
+              <ion-option *ngFor="let conta of contas" value="conta.ID"> {{conta.DESCRICAO}} </ion-option>
+              
             </ion-select>
             
         </ion-item>
         <ion-item>
           
           <ion-label>Tipo</ion-label>
-          <ion-select [(ngModel)]="lancamento.TIPO">
-            <ion-option value="nes">NES</ion-option>
-            <ion-option value="n64">Nintendo64</ion-option>
-            <ion-option value="ps">PlayStation</ion-option>
-            <ion-option value="genesis">Sega Genesis</ion-option>
-            <ion-option value="saturn">Sega Saturn</ion-option>
-            <ion-option value="snes">SNES</ion-option>
+          <ion-select [(ngModel)]="lancamento.TIPO" name="TIPO" >
+            <ion-option value="C">Crédito</ion-option>
+            <ion-option value="D">Débito</ion-option>
           </ion-select>
             
         </ion-item>
@@ -82,7 +77,9 @@
           <ion-label>Pago</ion-label>
           <ion-checkbox color="dark" checked="true" [(ngModel)]="lancamento.PAGO"></ion-checkbox>
         </ion-item>
-
+        <!-- <div padding>
+          <button ion-button color="primary" block (click)="salvar()">Salvar</button>
+        </div> -->
 
       </ion-list>
 

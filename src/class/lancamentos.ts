@@ -4,7 +4,7 @@ export class Lancamento {
     ID: number;
     DESCRICAO: string;
     VALOR: number;
-    MES: string;
+    MES: number;
     ANO: number;
     CONTA: Conta;
     TIPO: string;
