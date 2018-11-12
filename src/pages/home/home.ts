@@ -1,7 +1,8 @@
 import { LancamentosDaoProvider } from './../../providers/lancamentos-dao/lancamentos-dao';
-import { LancamentoAddPage } from './../lancamento-add/lancamento-add';
 import { Component } from '@angular/core';
 import { NavController, AlertController, ToastController } from 'ionic-angular';
+import { LancamentoAddPage } from '../lancamento-add/lancamento-add';
+
 
 @Component({
   selector: 'page-home',
@@ -11,29 +12,27 @@ export class HomePage {
 
   public listLancCred:any[] = [];
   public listLancDeb:any[] = [];
-  public mes: number = 0;
-  public ano: number = 0;
-  public month: String = "";
+  public referencia_mes: number = 0;
+  public referencia_ano: number = 0;
+  public mes: string = '';
 
   constructor(public navCtrl: NavController,
               public daoLancamento: LancamentosDaoProvider,
               public alertCtrl: AlertController,
               public toast: ToastController) {
-
     let date = new Date();
-    this.mes = date.getMonth();
-    this.ano = date.getFullYear();
-
+    this.referencia_mes = date.getMonth();
+    this.referencia_ano = date.getFullYear();
   }
 
   ionViewDidEnter() {
     this.getListCred();
     this.getListDeb();
-    this.getMes(this.mes);
+    this.getMes(this.referencia_mes);
   }
 
   getListCred() {
-    this.daoLancamento.getList('C', this.mes, this.ano)
+    this.daoLancamento.getList('C', this.referencia_mes, this.referencia_ano)
                       .then((result: any[]) => {
                         console.log(result);
                         this.listLancCred = result;
@@ -41,56 +40,23 @@ export class HomePage {
   }
 
   getListDeb() {
-    this.daoLancamento.getList('D', this.mes, this.ano)
+    this.daoLancamento.getList('D', this.referencia_mes, this.referencia_ano)
                       .then((result: any[]) => {
                         console.log(result);
                         this.listLancDeb = result;
                       });
   }
 
-  getMes(month) {
-    switch (month) {
-      case 0:
-        this.month = "Janeiro";
-        break;
-      case 1:
-        this.month = "Fevereiro";
-        break;
-      case 2:
-        this.month = "Março";
-        break;
-      case 3:
-        this.month = "Abril";
-        break;
-      case 4:
-        this.month = "Maio";
-        break;
-      case 5:
-        this.month = "Junho";
-        break;
-      case 6:
-        this.month = "Julho";
-        break;
-      case 7:
-        this.month = "Agosto";
-        break;
-      case 8:
-        this.month = "Setembro";
-        break;
-      case 9:
-        this.month = "Outubro";
-        break;
-      case 10:
-        this.month = "Novembro";
-        break;
-      case 11:
-        this.month = "Dezembro";
-        break;
-    
-      default:
-        this.month = "";
-        break;
-    }
+  pago(id) {
+    this.daoLancamento.setPago(id).then((result:any[]) => {
+      console.log(result);
+      this.toast.create({
+        message: "Lançamento Pago!",
+        duration: 1500,
+        position: 'botton'
+      }).present();
+      this.ionViewDidEnter();
+    });
   }
 
   delete(id) {
@@ -121,7 +87,57 @@ export class HomePage {
       ]
     }).present();
   }
-  public toLancamentoAdd() {
+
+  addLancamento() {
     this.navCtrl.push(LancamentoAddPage);
+  }
+
+  edit(id) {
+    this.navCtrl.push(LancamentoAddPage, {"id":id});
+  }
+
+  getMes(mes) {
+    switch (mes) {
+      case 0:
+        this.mes = "Janeiro";
+        break;
+      case 1:
+        this.mes = "Fevereiro";
+        break;
+      case 2:
+        this.mes = "Março";
+        break;
+      case 3:
+        this.mes = "Abril";
+        break;
+      case 4:
+        this.mes = "Maio";
+        break;
+      case 5:
+        this.mes = "Junho";
+        break;
+      case 6:
+        this.mes = "Julho";
+        break;
+      case 7:
+        this.mes = "Agosto";
+        break;
+      case 8:
+        this.mes = "Setembro";
+        break;
+      case 9:
+        this.mes = "Outubro";
+        break;
+      case 10:
+        this.mes = "Novembro";
+        break;
+      case 11:
+        this.mes = "Dezembro";
+        break;
+    
+      default:
+        this.mes = "";
+        break;
+    }
   }
 }
