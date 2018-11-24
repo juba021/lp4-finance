@@ -3,7 +3,19 @@ page-home {
     
 }
 
-.teste {
+
+.lancamento {
+    width: 100%;
+    position: relative;
+  }
+  .lancamento .pago {
+    position: absolute;
+    color: green;
+    right: 5%;
+    top: 25%;
+  }
+
+.navigation {
     padding: 10px;
     text-align: center;
     font-size: 18px;

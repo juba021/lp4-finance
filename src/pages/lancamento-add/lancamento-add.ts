@@ -1,8 +1,9 @@
+import { Lancamento } from './../../class/lancamentos';
 import { ContasDaoProvider } from './../../providers/contas-dao/contas-dao';
 import { LancamentosDaoProvider } from './../../providers/lancamentos-dao/lancamentos-dao';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
-import { Lancamento } from '../../class/lancamentos';
+
 
 
 /**
@@ -33,8 +34,8 @@ export class LancamentoAddPage {
               public alertCtrl: AlertController) {
     this.lancamento = new Lancamento();
     let data = new Date();
-    this.lancamento.REFERENCIA_MES = data.getMonth();
-    this.lancamento.REFERENCIA_ANO = data.getFullYear();
+    this.lancamento.MES = data.getMonth();
+    this.lancamento.ANO = data.getFullYear();
     this.lancamento.TIPO = 'C';
 
     if (this.navParams.data.id) {
@@ -51,7 +52,7 @@ export class LancamentoAddPage {
   }
 
   setListYears() {
-    for (let index = this.lancamento.REFERENCIA_ANO-5; index < this.lancamento.REFERENCIA_ANO+10; index++) {
+    for (let index = this.lancamento.ANO-5; index < this.lancamento.ANO+10; index++) {
       this.listYears.push(index);      
     }
   }
@@ -63,6 +64,7 @@ export class LancamentoAddPage {
   }
 
   salvar() {
+    
     // Validar campos antes de salvar
     // Não deixar o usuário enviar formulário sem os campos obrigatórios
     if (this.lancamento.DESCRICAO == null || this.lancamento.DESCRICAO == undefined || !this.lancamento.DESCRICAO.trim()) {
@@ -118,7 +120,7 @@ export class LancamentoAddPage {
       return this.daoLancamentos.insert(this.lancamento)
                   .then(() => {
                     this.toast.create({
-                      message: 'Lançamento salvo com sucesso!',
+                      message: 'Lançamento salvo com sucesso!  ',
                       duration: 1500,
                       position: 'botton'
                     }).present();

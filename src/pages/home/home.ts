@@ -1,7 +1,8 @@
+import { LancamentoAddPage } from './../lancamento-add/lancamento-add';
 import { LancamentosDaoProvider } from './../../providers/lancamentos-dao/lancamentos-dao';
 import { Component } from '@angular/core';
 import { NavController, AlertController, ToastController } from 'ionic-angular';
-import { LancamentoAddPage } from '../lancamento-add/lancamento-add';
+
 
 
 @Component({
@@ -15,6 +16,10 @@ export class HomePage {
   public referencia_mes: number = 0;
   public referencia_ano: number = 0;
   public mes: string = '';
+  public totalCred: number = 0;
+  public totalDeb: number = 0;
+  public saldo: number = 0;
+  
 
   constructor(public navCtrl: NavController,
               public daoLancamento: LancamentosDaoProvider,
@@ -29,10 +34,11 @@ export class HomePage {
     this.getListCred();
     this.getListDeb();
     this.getMes(this.referencia_mes);
+    this.totals();
   }
 
   getListCred() {
-    this.daoLancamento.getList('C', this.referencia_mes, this.referencia_ano)
+    this.daoLancamento.getList('C')
                       .then((result: any[]) => {
                         console.log(result);
                         this.listLancCred = result;
@@ -40,11 +46,22 @@ export class HomePage {
   }
 
   getListDeb() {
-    this.daoLancamento.getList('D', this.referencia_mes, this.referencia_ano)
+    this.daoLancamento.getList('D')
                       .then((result: any[]) => {
                         console.log(result);
                         this.listLancDeb = result;
                       });
+  }
+
+  totals() {
+    console.log(this.listLancCred);
+    console.log(this.listLancDeb);
+    
+    for (let i = 0; i < this.listLancDeb.length; i++) {
+      this.totalDeb += this.listLancDeb[i];
+    } 
+
+    
   }
 
   pago(id) {

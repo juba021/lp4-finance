@@ -1,7 +1,8 @@
+import { Conta } from './../../class/contas';
 import { ContasDaoProvider } from './../../providers/contas-dao/contas-dao';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { Conta } from '../../class/contas';
+
 
 /**
  * Generated class for the ContasAddPage page.
